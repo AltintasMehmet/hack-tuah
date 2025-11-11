@@ -1,0 +1,12 @@
+# Terraform local state & secrets
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+terraform.tfvars
+*.tfvars
+*.auto.tfvars
+backend.hcl
+
+# Node modules (prevent accidental adds)
+node_modules/

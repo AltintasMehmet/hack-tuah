@@ -1,0 +1,25 @@
+environment_name = "production"
+aws_region       = "eu-west-1"
+app_repository   = "https://github.com/pxl-digital/playlist-parser.git"
+
+spotify_client_id     = "your-spotify-client-id"
+spotify_client_secret = "your-spotify-client-secret"
+spotify_redirect_uri  = "https://production.example.com/api/auth/callback"
+
+frontend_ami = "ami-xxxxxxxx"
+api_ami      = "ami-xxxxxxxx"
+database_ami = "ami-xxxxxxxx"
+
+frontend_instance_type = "t3.small"
+api_instance_type      = "t3.small"
+database_instance_type = "t3.medium"
+
+public_subnet_cidrs  = ["10.1.0.0/24", "10.1.1.0/24"]
+private_subnet_cidrs = ["10.1.10.0/24", "10.1.11.0/24"]
+availability_zones   = ["eu-west-1a", "eu-west-1b"]
+
+ssh_key_name = "optional-key-name"
+
+tags = {
+  Project = "playlistparser"
+}
