@@ -1,0 +1,7 @@
+region              = "eu-west-1"
+bucket_name         = "pxl-playlistparser-terraform-state"
+dynamodb_table_name = "pxl-playlistparser-terraform-locks"
+
+tags = {
+  Project = "playlistparser"
+}
