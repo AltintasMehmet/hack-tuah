@@ -1,0 +1,44 @@
+# Version control
+.git
+.gitignore
+
+# Documentation
+README.md
+*.md
+
+# IDE files
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Runtime files
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files (these should be mounted or copied explicitly)
+.env
+.env.local
+.env.*.local
+
+# Build artifacts
+dist/
+build/
+
+# Database files
+*.db
+*.sqlite
+
+# Temporary files
+tmp/
+temp/

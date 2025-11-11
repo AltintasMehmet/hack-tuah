@@ -1,0 +1,41 @@
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: playlistparser-db
+    environment:
+      POSTGRES_DB: playlistparser
+      POSTGRES_USER: playlistparser
+      POSTGRES_PASSWORD: playlistparser
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build: .
+    container_name: playlistparser-api
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgres://playlistparser:playlistparser@db:5432/playlistparser?schema=public
+      FRONTEND_ORIGIN: http://127.0.0.1:5173
+      RUN_DB_SETUP: "true"   # entrypoint runs generate + migrate deploy
+      SEED_DB: "true"        # set to "false" if you don't want seeds
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:3000/healthz || exit 1"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  db_data:
